@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+
+import webbrowser
+print ("\n\nWebbrowser module imported")
+url=input('Please type url: ')
+webbrowser.open(url)
+print('\nTrying to open url in browser\n')
+input("\nPress any key to exit\n")

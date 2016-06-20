@@ -1,0 +1,38 @@
+#!/usr/bin/python
+'''
+print(Elems[0].text)
+
+for i in Elems
+  print(i.text)
+
+quantity=len(Elems)
+
+for i in range(quantity):
+	print(Elems[i].text)
+	
+
+'''
+import bs4
+soup=bs4.BeautifulSoup(open('posuda.html'),'lxml') #open prepared file
+Elems=soup.select('.header-toolbar-navigation__item .header-toolbar-navigation__link') #find main catalogs
+
+#print(Elems)
+Elems_quantity=len(Elems) #count list of extracted subcatalogs
+#print (quantity)
+for i in range(Elems_quantity): #iterate over list and print main catalog names
+	print(Elems[i].text)
+
+print("\n\n First phase finished, next step is to extract subCatalogs...")
+
+subElems=soup.select('.header-toolbar-navigation__item .element') #find subcatalogs
+#print(subElems)
+subElems_quantity=len(subElems) #count list of subcatalogs
+for x in range(subElems_quantity):
+	print(subElems[x].text)
+
+
+
+
+
+
+

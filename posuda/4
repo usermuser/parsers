@@ -1,0 +1,43 @@
+#!/usr/bin/python
+'''
+print(Elems[0].text)
+
+for i in Elems
+  print(i.text)
+
+quantity=len(Elems)
+
+for i in range(quantity):
+	print(Elems[i].text)
+	
+print(Elems_links[0].text)
+Elems_links=soup.select('.header-toolbar-navigation__item li a')
+
+###
+to select all catalogs with subcatalogs and also links >> Elems=soup.select('.header-toolbar-navigation__item')
+to get text of all catalogs and subcatalogs print(Elems[0].getText()) remember that first catalog is main catalog
+###
+
+'''
+import bs4
+soup=bs4.BeautifulSoup(open('posuda.html'),'lxml') #open prepared file
+
+Elems=soup.select('.header-toolbar-navigation__item .header-toolbar-navigation__link') #find main catalogs
+Elems_links=soup.select('.header-toolbar-navigation__item li a')
+#print(Elems)
+print(Elems_links)
+print(len(Elems_links))
+print(Elems_links[0].text)
+
+Elems_quantity=len(Elems) #count list of extracted subcatalogs
+#print (quantity)
+for i in range(Elems_quantity): #iterate over list and print main catalog names
+	print(Elems[i].text)
+
+
+
+
+
+
+
+
