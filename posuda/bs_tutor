@@ -1,0 +1,18 @@
+#!/usr/bin/python
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(open("43-congress.html"),"lxml")
+
+#print(soup.prettify())
+#links = soup.find_all('a')
+
+final_link=soup.p.a
+final_link.decompose()
+
+links = soup.find_all('a')
+for link in links:
+    names = link.contents[0]
+    fullLink = link.get('href')
+    print names
+    print fullLink
+
