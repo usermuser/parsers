@@ -1,0 +1,70 @@
+#!/ usr/bin/python
+
+import bs4, csv
+
+soup=bs4.BeautifulSoup(open('posuda.html'),'lxml') #open prepared file
+Elems=soup.select('.header-toolbar-navigation__item .header-toolbar-navigation__link') #find main catalogs
+
+#step1
+presta_cat_pattern = "ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL\n"
+f=open('file6_column.csv','wt')
+f.write(presta_cat_pattern)
+#f.close()
+
+#step2 
+Elems_quantity=len(Elems) #count list of extracted catalogs
+print('Catalogs quantity = ',Elems_quantity, '\n')
+
+#step3 not correct
+'''
+num=1
+f=open('file6_column.csv','wt')
+for i in range (Elems_quantity):
+    f.write('\nnum')
+    num=+1 
+f.close()
+'''
+
+#step3 another way and step3
+#f=open('file6_column.csv','wt')
+num=1 #just helper counter
+for i in range(Elems_quantity): 
+    if Elems_quantity > (num-1):
+        f.write(str(num))     #column  ID
+        num=int(num)+1        #increment helper counter
+        f.write(';1\n')       #write in column Active 1 because i think all 
+        f.write(Elems[i].text)
+f.close()
+'''
+for i in range(Elems_quantity): #iterate over list and print main catalog names
+    mystring=mystring+Elems[i].text+';'
+print(mystring)
+'''
+#step1 write pattern
+#step2 count how many catalogs we have
+#step3 write id of each catalog in column in csv file from 1 to 8 (according quanitiy)
+#step4 also fill in "Active" (0/1) Column from 1 to 8 (accordint quantity)
+#step5 fill "Name" column with catalog names extracted from web
+
+
+#vrode bil main cycle
+'''
+for i in range(Elems_quantity):
+    print(Elems[i].text)
+    #writing text to first column
+    f.write(Elems[i].text)
+    f.write('\n;1;1')
+print( "Name of the file: ", f.name)
+f.close()
+'''
+''' 
+f=open('file6','wt') #wt means write as text, while wb means write as binary
+print('writing all categories to ', f.name)
+f.write(mystring)
+f.close()
+'''
+#TODO write string into csv file for presta
+
+#presta pattern
+#ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL
+#print "Name of the file: ", fo.name

@@ -1,0 +1,37 @@
+#!/ usr/bin/python
+
+import bs4, csv
+
+soup=bs4.BeautifulSoup(open('posuda.html'),'lxml') #open prepared file
+Elems=soup.select('.header-toolbar-navigation__item .header-toolbar-navigation__link') #find main catalogs
+
+Elems_quantity=len(Elems) #count list of extracted catalogs
+print('elems quantity: ',Elems_quantity)
+mystring ='' 
+
+for i in range(Elems_quantity): #iterate over list and print main catalog names
+   mystring=mystring+Elems[i].text+';'
+print(mystring)
+
+f=open('file5','wt') #wt means write as text, while wb means write as binary
+print('writing all categories to file5')
+f.write(mystring)
+f.close()
+#TODO make csf file where will be data according import csv file for presta
+'''
+f=open('string5','wb')
+f.write(string)
+f.close()
+print('done')
+'''
+#f = csv.writer(open("posuda_cats.csv", "w"))
+#f.writerow(["position1", "position2","position3"])
+#my_test_file = open('test_temporary_file.txt','wb')
+    #names = Elems[i].text
+    #f.writerow([names, names])
+'''
+for i in range(Elems_quantity): #iterate over list and print main catalog names
+    print(Elems[i].text)
+    my_test_file.writelines(Elems[i].text)
+my_test_file.close()
+'''
