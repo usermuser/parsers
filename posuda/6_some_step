@@ -13,7 +13,8 @@ f.write(presta_cat_pattern)
 
 #step2 
 Elems_quantity=len(Elems) #count list of extracted catalogs
-print('Catalogs quantity = ',Elems_quantity, '\n')
+#print('Catalogs quantity = ',Elems_quantity, '\n')
+print('Catalogs quantity = ',Elems_quantity)
 
 #step3 not correct
 '''
@@ -25,16 +26,20 @@ for i in range (Elems_quantity):
 f.close()
 '''
 
-#step3 another way and step3
+#step3 another way and step4
 #f=open('file6_column.csv','wt')
+# ID; ACTIVE; NAME;
 num=1 #just helper counter
 for i in range(Elems_quantity): 
     if Elems_quantity > (num-1):
         f.write(str(num))     #column  ID
         num=int(num)+1        #increment helper counter
-        f.write(';1\n')       #write in column Active 1 because i think all 
+        f.write(';1;')        #write in column Active 1 because i think all cats will be active
         f.write(Elems[i].text)
+        f.write(';Parent category\n')
+       # f.write('\n')
 f.close()
+print('cats written in file =',f.name)
 '''
 for i in range(Elems_quantity): #iterate over list and print main catalog names
     mystring=mystring+Elems[i].text+';'

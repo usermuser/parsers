@@ -1,10 +1,9 @@
 ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL
-1;1
-Праздничная посуда и подарки2;1
-Кухня3;1
-Спальня4;1
-Ванная5;1
-Дом6;1
-Детям7;1
-Отдых8;1
-Подарочные карты
+1;1;Праздничная посуда и подарки;Parent category
+2;1;Кухня;Parent category
+3;1;Спальня;Parent category
+4;1;Ванная;Parent category
+5;1;Дом;Parent category
+6;1;Детям;Parent category
+7;1;Отдых;Parent category
+8;1;Подарочные карты;Parent category
