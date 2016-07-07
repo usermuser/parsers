@@ -1,9 +1,9 @@
 ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL
-11;1;Праздничная посуда и подарки;Category1;0;Description;
-12;1;Кухня;Category1;0;Description;
-13;1;Спальня;Category1;0;Description;
-14;1;Ванная;Category1;0;Description;
-15;1;Дом;Category1;0;Description;
-16;1;Детям;Category1;0;Description;
-17;1;Отдых;Category1;0;Description;
-18;1;Подарочные карты;Category1;0;Description;
+21;1;Праздничная посуда и подарки;HOMENAH;0;Description;
+22;1;Кухня;HOMENAH;0;Description;
+23;1;Спальня;HOMENAH;0;Description;
+24;1;Ванная;HOMENAH;0;Description;
+25;1;Дом;HOMENAH;0;Description;
+26;1;Детям;HOMENAH;0;Description;
+27;1;Отдых;HOMENAH;0;Description;
+28;1;Подарочные карты;HOMENAH;0;Description;

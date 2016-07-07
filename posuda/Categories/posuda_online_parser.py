@@ -1,23 +1,23 @@
-#!/ usr/bin/python
-#if you recieve message that bs4 is not installed just type in terminal sudo apt-get install python3-bs4
-#if you get message 'permission denied' check permissions flags, to solve problem use chmod command (for example chmod 644 filename)
-#https://ru.wikipedia.org/wiki/Chmod
+import urllib, csv
+from bs4 import BeautifulSoup
 
-#TODO Figure out what structure of categories and subcatalogs we need. Also understand what structure of cats and subcats we have
-#WE CAN extract subcategories and add parent categories
+myurl = urllib.urlopen("http://posudacenter.ru/")
+# NOTE: At the interactive Python prompt, you may be prompted for a username
+# NOTE: and password here.
+# Read from the object, storing the page's contents in 's'.
+s = myurl.read()
+#soup=BeautifulSoup(s,'html.parser')
+soup=BeautifulSoup(s,'lxml')
+#pretty_soup=soup.prettify()
+#encoded_html=pretty_soup.encode('utf-8')
+#myfile=open('posudacenter.html','wt')
+#myfile.write(soup)
+#myfile.close()
+#print('Website saved in',myfile.name)
 
-#step1 write pattern
-#step2 count how many catalogs we have
-#step3 write id of each catalog in column in csv file from 1 to 8 (according quanitiy)
-  #looks like cat id must start from 4 or higher i choose 11
-#step3 also fill in "Active" (0/1) Column from 1 to 8 (accordint quantity)
-#step4 fill "Name" column with catalog names extracted from web
 
-import bs4, csv
 
-soup=bs4.BeautifulSoup(open('posuda.html'),'lxml')                                        #open prepared file
-Elems=soup.select('.header-toolbar-navigation__item .header-toolbar-navigation__link')    #find main catalogs
-
+Elems=soup.select('.header-toolbar-navigation__item .header-toolbar-navigation__link')
 #step1 write presta catalogs pattern in csv file
 presta_cat_pattern = "ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL\n"
 f=open('parsed.csv','wt')
@@ -35,7 +35,9 @@ for i in range(Elems_quantity):                              #start iterato over
         f.write(str(id))                                     #column  ID (ID writer) must be string
         id=int(id)+1                                         #ID increment (converted to integer)
         f.write(';1;')                                       #write in column Active 1 because i think all cats will be active
-        f.write(Elems[i].text)                               #write categories names
+        enc=Elems[i].text.encode('utf-8')
+        #f.write(Elems[i].text)                               #write categories names
+        f.write(enc)                                          #write categories names
         f.write(';Home;')                                    #write text "Parent category"
         f.write('0;')                                        #Root category (0/1)
         f.write('Description;')                              #bla bla
@@ -44,3 +46,17 @@ f.close()                                                    #close file
 print('cats written in file =',f.name)                       #show csv file with extracted data
 
 
+
+
+
+
+            
+### ***place for patterns*** ###
+'''
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html_doc, 'html.parser')
+
+print(soup.prettify())
+'''
+
+###############################
