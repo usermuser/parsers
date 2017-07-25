@@ -1,0 +1,25 @@
+
+import urllib
+from bs4 import BeautifulSoup
+
+u='http://www.stoloto.ru/ruslotto/game'
+mu='http://www.stoloto.ru/ruslotto/game'
+myurl = urllib.urlopen(u)
+
+# NOTE: At the interactive Python prompt, you may be prompted for a username
+# NOTE: and password here.
+# Read from the object, storing the page's contents in 's'.
+s = myurl.read()
+soup=BeautifulSoup(s,'html.parser') #or lxml instead of html.parser
+pretty_string=soup.prettify()
+
+#print(prettyfied)
+mypfile=open('plot','wt')
+mypfile.write(pretty_string.encode('utf-8'))
+
+#lxml was before instead of html.parser
+mypfile.close()
+
+myfile=open('mlot','wt')
+myfile.write(soup.encode('utf-8'))
+myfile.close()
