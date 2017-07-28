@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Онлайн консультант</title>
+	<script src="a_data/main.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="googlebot" content="noindex">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<style> #fromOperator, #fromOperatorHeader, #fromVisitor, #fromVisitorHeader, #promptContainer { display: none; } </style>
+	<script>
+		var url = "css/mac.css?version=3.1.539.1499168409961";
+
+		window.redhlpSettings = {
+			skin: "mac"
+		};
+
+		if (location.href.indexOf("skin=modern") != -1) {
+			url = url.replace("mac", "modern");
+			window.redhlpSettings.skin = "modern";
+		}
+
+		if (location.href.indexOf("skin=material") != -1) {
+			url = url.replace("mac", "material");
+			window.redhlpSettings.skin = "material";
+		}
+
+		var css = document.createElement("link");
+		css.setAttribute("rel", "stylesheet");
+		css.setAttribute("type", "text/css");
+		css.setAttribute("href", url);
+		css.id = "rh-css";
+		document.getElementsByTagName("head")[0].appendChild(css);
+	</script><link rel="stylesheet" type="text/css" href="a_data/mac.css" id="rh-css">
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="jquery-new.js"></script></head>
+<body class="operatorRates no-departments rh-customTemplate">
+
+	<div id="blocker" style="display: none;"></div>
+	<div id="container">
+	<div id="chooseDepartment" style="display: none">
+		<div class="colorifier" style="background: rgb(1, 54, 145) none repeat scroll 0% 0%; opacity: 0.159167;"></div>
+		<div class="topPanel" style="-moz-user-select: none;">
+		</div>
+		<div class="chooseDepartmentTextWrapper">
+			<div class="chooseDepartmentText"></div>
+			<span class="hideDepartments"><span class="icon"><span></span></span><span class="txt"></span></span>
+		</div>
+		<div id="departmentsWrapper" class="scroller-parent">
+			<div id="departmentsContainer" class="scroller" data-baron-v="inited" style="width: 0px;">
+				<ul id="departments"></ul>
+				<div class="scroller__track">
+					<div class="scroller__bar" id="departments_bar" style="top: 0px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="offline" style="display: none;">
+		<div class="colorifier" style="background: rgb(1, 54, 145) none repeat scroll 0% 0%; opacity: 0.159167;"></div>
+		<div class="center">
+			<div class="topPanel" style="width: 218px; height: auto; -moz-user-select: none;">
+				<span class="showDepartments"><span class="icon"><span></span></span><span class="txt"></span></span>
+				<br><br>
+				<div class="header">Обратная связь</div>
+				<div class="description">В данный момент все операторы недоступны. Оставьте сообщение, и мы свяжемся с вами по электронной почте.</div>
+			</div>
+			<div id="offlineError"></div>
+			<div id="mailSuccess"></div>
+			<div id="feedbackForm">
+				<div class="inputField name" style="display: none;">
+					<label for="name" style="-moz-user-select: none;"></label>
+					<input id="name" name="name" placeholder="Ваше имя" type="text">
+				</div>
+				<div class="inputField email" style="display: block;">
+					<label for="email" style="-moz-user-select: none;"></label>
+					<input id="email" name="email" placeholder="E-mail" type="email">
+				</div>
+				<div class="inputField phone" style="display: none;">
+					<label for="phone" style="-moz-user-select: none;"></label>
+					<input id="phone" name="phone" placeholder="Телефон" type="text">
+				</div>
+				<div class="inputField message" style="top: 2.6em;">
+					<label for="message" style="-moz-user-select: none;"></label>
+					<textarea id="message" name="message" placeholder="Сообщение"></textarea>
+				</div>
+				<div id="actionPanel">
+					<div id="sendButton" style="-moz-user-select: none;">Отправить</div>
+					<div id="throbber" style="display: none;">Отправка...</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="offlineSuccess" style="display: none;">
+		<div>Ваше сообщение отправлено</div>
+	</div>
+	<div id="online" style="" class="">
+		<div id="onlinePanel">
+			<div class="center">
+				<div class="wrapper">
+					<div class="topPanel" style="-moz-user-select: none;">
+						<div class="toppanel_top">
+							<span>Онлайн-поддержка</span>
+							<img src="a_data/ico.png">
+						</div>
+
+						<div id="faceWrapper">
+							<div id="faceRate">
+								<div id="faceImgWrapper"><img id="face" alt="" style="" src="Ava_default.png" title=""></div>
+								<!-- <div id="rate">
+								   <a id="like" name="rh_like" title="Оценить оператора">&nbsp;</a>
+								   <a id="dislike"  name="rh_dislike" title="Оценить оператора">&nbsp;</a>
+							   </div> -->
+							</div>
+							<div id="topDescription">
+								<h2>Ваш консультант</h2>
+								<span>Мы рады ответить на ваши вопросы ежедневно с 09:00 до 21:00 по МСК</span>
+								<div style="clear: both;"></div>
+								<a class="showDepartments"><span class="icon"><span></span></span><span class="txt"></span></a>
+							</div>
+						</div>
+					</div>
+					<div id="scrollBarContainer">
+						<div id="scrollBar"></div>
+					</div>
+					<div id="chatContainer" class="scroller-parent">
+						<div id="chatItself" class="scroller" data-baron-v="inited" style="width: 0px;">
+							<div id="invitation"></div>
+
+							<div class="msg" id="typingLabel">
+								<div class="textWrapper">
+									<div class="text"> отвечает</div>
+								</div>
+							</div>
+							<div class="msg" id="chatLabel" style="display: none;">
+								<div class="textWrapper">
+									<div class="text">К вам подключается оператор, подождите</div>
+								</div>
+							</div>
+							<div class="scroller__track">
+								<div class="scroller__bar" id="chat_bar" style="top: 0px;"></div>
+							</div>
+						<div id="stickyMessage" style="display: none"><a id="stickyMessageClose"></a><div id="stickyMessageBody"></div></div></div>
+					</div>
+					<div id="chatInput">
+						<div id="textAreaWrapper">
+							<textarea id="chatTextarea"></textarea>
+						<div id="textAreaPlaceholder">Ввести сообщение...</div></div>
+						<a id="chatSend" name="rh_send" title="Отправить сообщение">Отправить</a>
+						<a id="fileSend"><iframe src="a_data/upload.html" frameborder="0"></iframe></a>
+					</div>
+					<div id="fileUploadWrapper">
+						<div class="text"><span>Загрузить файл</span> (или перетащите файл в чат)</div>
+						<input name="file" id="uploadedFile" type="file">
+					</div>
+				</div>
+			</div>
+		</div>
+	<div id="dropArea"><div><div>Для отправки перетащите файл сюда</div></div></div></div>
+
+
+
+	
+
+	
+
+	
+
+	
+	<style>
+
+		#rh-badge {
+			display: none;
+		}
+
+		.raiting_result_message{
+			margin: 15px 0;
+			color: green;
+			display: none;
+		}
+
+		#raiting #onlinePanel{
+			min-height: 400px;
+		}
+
+		.smile_wrap{
+			display: flex;
+			justify-content: space-around;
+			width: 250px;
+			margin: 20px 0 10px 0;
+		}
+
+		.smile_item {
+			width: 35px;
+			height: 35px;
+			cursor: pointer;
+		}
+
+		.smile1{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile1.png) no-repeat;
+			background-size: contain;
+		}
+		.smile1.selected{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile1-hover.png) no-repeat;
+			background-size: contain;
+		}
+		.smile2{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile2.png) no-repeat;
+			background-size: contain;
+		}
+		.smile2.selected{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile2-hover.png) no-repeat;
+			background-size: contain;
+		}
+		.smile3{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile3.png) no-repeat;
+			background-size: contain;
+		}
+		.smile3.selected{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile3-hover.png) no-repeat;
+			background-size: contain;
+		}
+		.smile4{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile4.png) no-repeat;
+			background-size: contain;
+		}
+		.smile4.selected{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile4-hover.png) no-repeat;
+			background-size: contain;
+		}
+		.smile5{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile5.png) no-repeat;
+			background-size: contain;
+		}
+		.smile5.selected{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/smaile5-hover.png) no-repeat;
+			background-size: contain;
+		}
+
+		#raiting .toppanel_top{
+			margin-top: 3px;
+		}
+
+
+		#raiting_send{
+			border-radius: 4px;
+			padding: 10px 20px;
+			text-align: center;
+			cursor: pointer;
+			color: #fff!important;
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0c…dpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOnVybCgjZykiLz48L3N2Zz4=);
+			background-image: -ms-linear-gradient(top,#b0f16a,#03a202);
+			background-image: -moz-linear-gradient(top,#b0f16a,#03a202);
+			background-image: -webkit-linear-gradient(top,#b0f16a,#03a202);
+			background-image: -o-linear-gradient(top,#b0f16a,#03a202);
+			border: none;
+		}
+
+		#back_btn, #raiting_go{
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0c…B3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDp1cmwoI2cpIi8+PC9zdmc+);
+			background-image: -ms-linear-gradient(top,#fff,#e3e3e3);
+			background-image: -moz-linear-gradient(top,#fff,#e3e3e3);
+			background-image: -webkit-linear-gradient(top,#fff,#e3e3e3);
+			background-image: -o-linear-gradient(top,#fff,#e3e3e3);
+			color: #000!important;
+			border: 1px solid #ccc!important;
+			font-family: Arial,sans-serif;
+			/* font-size: 92%; */
+			font-weight: 400;
+			padding: 10px;
+			/* padding-bottom: 5px; */
+			text-shadow: none;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			-o-border-radius: 5px;
+			-ms-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			-o-box-shadow: none;
+			-ms-box-shadow: none;
+			box-shadow: none;
+			cursor: pointer;
+		}
+
+		.rh_raiting_control{
+			display: flex;
+			justify-content: space-between;
+			width: 250px;
+			margin-top: 20px;
+		}
+
+		.radio_wrap{
+			display: flex;
+			justify-content: space-between;
+			width: 250px;
+			margin-top: 20px;
+		}
+		.raiting_q{
+			font-size: 15px;
+			margin-top: 20px;
+		}
+		.raiting_q_small{
+			margin-top: 10px;
+		}
+		#raiting{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			background: #394964 !important;
+			color: #fff;
+		}
+		#raiting_go{
+			position: relative;
+			top: 185%;
+			color: #bbb;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding: 9px 6px;
+			text-align: center;
+			width: 148px;
+			cursor: pointer;
+		}
+
+
+		/* cyrillic-ext */
+		@font-face {
+			font-family: 'PT Sans Narrow';
+			font-style: normal;
+			font-weight: 700;
+			src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url(//fonts.gstatic.com/s/ptsansnarrow/v7/Q_pTky3Sc3ubRibGToTAYtUWWqxCFjd5cEd_RrOHL6Y.woff2) format('woff2');
+			unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+		}
+		/* cyrillic */
+		@font-face {
+			font-family: 'PT Sans Narrow';
+			font-style: normal;
+			font-weight: 700;
+			src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url(//fonts.gstatic.com/s/ptsansnarrow/v7/Q_pTky3Sc3ubRibGToTAYupmode525gDTwNyPqZGNXY.woff2) format('woff2');
+			unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+		}
+		/* latin-ext */
+		@font-face {
+			font-family: 'PT Sans Narrow';
+			font-style: normal;
+			font-weight: 700;
+			src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url(//fonts.gstatic.com/s/ptsansnarrow/v7/Q_pTky3Sc3ubRibGToTAYtglsoc-tKu3skzGCjmMb84.woff2) format('woff2');
+			unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+		}
+		/* latin */
+		@font-face {
+			font-family: 'PT Sans Narrow';
+			font-style: normal;
+			font-weight: 700;
+			src: local('PT Sans Narrow Bold'), local('PTSans-NarrowBold'), url(//fonts.gstatic.com/s/ptsansnarrow/v7/Q_pTky3Sc3ubRibGToTAYgLD8Y5MzQlrxbBEhr8UV_w.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+		}
+
+		#online,#offline, #chooseDepartment{
+			background: #394964 !important;
+			border-radius: 0px 7px 7px 0px !important;
+		}
+		#container{
+			border-radius: 0px 7px 7px 0px !important;
+		}
+		.colorifier {
+			border-radius: 0px 7px 7px 0px !important;
+		}
+		.toppanel_top{
+			height: 55px;
+		}
+		.toppanel_top img{
+			position: relative;
+			top: 19px;
+			left: 10px;
+		}
+		.toppanel_top span{
+			font-size: 18px;
+			font-family: "Arial";
+			font-weight: bold;
+			position: relative;
+			top: 20px;
+			left: 0px;
+			color: #fff;
+			text-shadow: none;
+		}
+
+		#chatContainer{
+			height: 51%;
+		}
+
+		#online .topPanel, #chooseDepartment .topPanel{
+			position: relative;
+			top: -87px;
+			height: 145px;
+		}
+
+		#topDescription h2{
+			font-size: 17px;
+			font-family: "Arial";
+			font-weight: bold;
+			color: #fff;
+			margin: 0;
+			line-height: 20px;
+			margin-bottom: 5px;
+		}
+
+		.topPanel .header{
+			font-size: 18px;
+			margin-bottom: 8px;
+		}
+		#online .topPanel,#offline .topPanel{
+			color: #fff;
+			text-shadow: none;
+		}
+		#topDescription span,#topPanel #description{
+			font-size: 13px;
+			opacity: 0.8px;
+		}
+		#chatContainer{
+			top: -75px;
+			border-radius: 10px;
+		}
+
+		#chatInput{
+			top: -75px;
+			border-radius: 10px;
+			height: 20%;
+		}
+
+		#feedbackForm input, #feedbackForm textarea{
+			border-radius: 10px;
+		}
+
+		#chatSend {
+			top: 115%;
+			border-radius: 4px;
+			padding: 10px 20px;
+			text-align: center;
+			cursor: pointer;
+			color: #fff!important;
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0c…dpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOnVybCgjZykiLz48L3N2Zz4=);
+			background-image: -ms-linear-gradient(top,#b0f16a,#03a202);
+			background-image: -moz-linear-gradient(top,#b0f16a,#03a202);
+			background-image: -webkit-linear-gradient(top,#b0f16a,#03a202);
+			background-image: -o-linear-gradient(top,#b0f16a,#03a202);
+			display: block;
+			width: 80px;
+			height: 15px;
+			border: none;
+
+		}
+		#sendButton{
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/send.png) no-repeat;
+			width: 91px;
+			height: 32px;
+			border: none;
+			padding: 0;
+			font-size: 0px;
+		}
+		#sendButton:hover{
+			opacity: 0.8;
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/send.png) no-repeat;
+			width: 91px;
+			height: 32px;
+			border: none;
+			padding: 0;
+		}
+		#fileSend{
+			top: 115%;
+			background: url(//www.stoloto.ru/media/stoloto/redhelper/attache.png) no-repeat;
+			width: 135px;
+			height: 32px;
+			border: none;
+			left: 0;
+			margin-top: 5px;
+		}
+
+		.wrapper {
+			padding: 0 20px 0 20px;
+		}
+
+		#online .topPanel, #chooseDepartment .topPanel{
+			left: 0;
+			right: 0;
+		}
+
+		#textAreaWrapper{
+			width: 100%;
+		}
+		#chatTextarea{
+			width: 94%;
+			padding: 0.5em 0.5em 0.7em 0.417em;
+			height: 94%;
+		}
+		#textAreaPlaceholder{
+			top: 0.5em;
+		}
+	</style>
+<div id="fromOperatorHeader" class="msgHeader fromOperator">
+		<span class="sender">%displayName%</span>
+	</div><div id="fromOperator" class="msg">
+		<span class="time" style="-moz-user-select: none;">%time%</span>
+		<div class="textWrapper">
+			<div class="text">%text%</div>
+		</div>
+	</div><div id="fromVisitorHeader" class="msgHeader fromVisitor">
+		<span class="sender">%displayName%</span>
+	</div><div id="fromVisitor" class="msg">
+		<span class="time" style="-moz-user-select: none;">%time%</span>
+		<div class="textWrapper">
+			<div class="text">%text%</div>
+		</div>
+	</div></div>
+	<div id="rh-loadCss"></div>
+	<div id="rh-innerCss"></div>
+	<audio id="audio" style="display: none">
+		<source src="a_data/msg.ogg" type="audio/ogg">
+		<source src="a_data/msg.mp3" type="audio/mp3">
+	</audio>
+
+</body></html>

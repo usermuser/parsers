@@ -1,0 +1,2 @@
+(function(d){var i=d.createElement('img');i.src='http://track.audtd.com/match/self';i.width='1';i.height='1';i.style.cssText='display:none;width:1px;height:1px';d.body.appendChild(i);}(document));
+(function(d){var i=d.createElement('img');i.src='https://cm.g.doubleclick.net/pixel?google_nid=auditorius&google_cm&fpd=self&google_ula=392860187';i.width='1';i.height='1';i.style.cssText='display:none;width:1px;height:1px';d.body.appendChild(i);}(document));

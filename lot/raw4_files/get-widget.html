@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}</style>
+  <!-- перевод IE в режим Edge (chrome = 1 не нужен) : stackoverflow.com/a/22059516/6056120 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">  
+  <title>Widget popup</title>
+  
+  <!-- шрифт с внешнего источника типа гугл фонтс -->
+  <link href="get-widget_data_002/css.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="style1.css"> -->
+
+  <!-- jQuery -->
+  <script src="get-widget_data/jquery.js"></script>    
+
+  <style type="text/css">
+
+    * {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif; /* не везде каскадируется поэтому лучше здесь */
+    }
+
+    body {
+      /*outline: 1px blue dashed;*/
+      width: 640px;            
+      /*height: 500px;*/
+      /* overflow:hidden; */
+      padding: 5px;
+    }
+
+    .container {         
+      position: relative;       
+      width: 628px;
+      height: 279px;
+      box-shadow: 0 0 11px 1px rgba(0, 0, 0, 0.24);
+      background: url(https://assets.flocktory.com/uploads/clients/2288/a6c06a99-9896-4a15-b424-1096822c09ef_bg1.png) 9.5% 37% no-repeat;
+      background-size: 1130px 850px;
+      padding: 30px 30px;
+    }
+    
+    #container-1 {
+
+    }   
+
+    #close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+    
+    .people {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+    }
+
+    #text1 {
+      color: #000000;      
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 33px;
+      margin-bottom: 70px;
+    }
+
+    .button {
+      width: 152px;
+      height: 35px;
+      line-height: 35px;
+      border-radius: 4px;
+      background-color: #249925;
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    #button1 {
+      margin-bottom: 15px;
+    }
+
+    #text2 {      
+      color: #957800;      
+      font-size: 12px;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    #text3 {    
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 42px;
+      margin-bottom: 10px;
+    }
+
+    #text4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    
+    #email {
+      width: 222px;
+      height: 35px;
+      border-radius: 4px;
+      border: 1px solid #cfa600;
+      background-color: #ffffff;
+      color: #9a9a9a;      
+      font-size: 14px;
+      font-weight: 400;
+      padding: 0 10px;
+      margin-bottom: 10px;
+    }
+
+    #button2 {
+      margin-bottom: 16px;
+    }
+
+    #text5 {
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 42px;
+      margin-bottom: 10px;
+    }    
+
+    #text6 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 100px;
+    }    
+
+    #text7 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 75px;
+    }    
+    
+  /* ЛОГИКА и фрагменты чужого кода */
+    #relative-input-container {
+      position: relative;
+    }
+
+    .Error {
+      display: none;
+      font-size: 10px;
+      position: absolute;
+      bottom: -14px;
+      padding: 5px 0;
+      text-align: left;
+      opacity: .9;
+      left: 12px;
+      font-weight: 100;
+      line-height: 11px;
+      z-index: 100;
+    }
+    .Error-inner {
+      padding: 5px 6px 4px 5px;
+      text-align: center;
+      color: #fff;
+      background-color: #000; }
+
+    .Error-arrow {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-width: 6px 5px 0;
+      border-style: solid;
+      border-color: transparent;
+      border-left-color: #000;
+    }
+    @media screen and (max-width:475px) {      
+      body {
+        /*width: 90%;*/
+      }
+      #container {        
+        /*width: 90%;*/
+      }
+    }
+
+    /* -------------- служебные классы --------------- */
+    
+    .wrong {
+      /*border-color: red !important;*/
+      border: 1px solid red !important;
+    }
+
+    .correct {
+      border-color: green !important;
+    }
+
+    /* всё что кликается (кнопки, чекбоксы) */
+    .clickable:active {
+      position: relative;
+      top: 1px;
+      left: 1px;
+    }
+
+    .clickable:hover {
+      opacity: .8;
+      cursor: pointer;
+    }       
+    
+    .unselectable-text {
+      /* запрет выделения текста, полезно в кнопках и лейблах полей */       
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -ms-user-select: none;
+    }
+    
+    .no-wrap {
+      /* спан класс запрет переноса для цен с пробелом у разрядов */
+      white-space: nowrap;      
+      font-family: inherit;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    .invisible {
+      display: none;
+    }
+    
+    #container-3 {
+      background-image: none;
+      background-color: #35b4f3;
+    }
+
+  </style>
+
+</head>
+<body data-width="100%">
+  
+  <div class="container" id="container-1" fl-screen="welcome">
+    <div id="close" fl-close="" fl-track-ga="click-close-welcome"><img src="get-widget_data/230a9c66-f67b-4330-93d4-c8993b462b60_close1.png" class="clickable"></div>
+    <img class="people" style="visibility: hidden;" src="get-widget_data/0d50dbad-5054-495e-9085-233fe351f8e4_bg01.png">
+    <div id="text1">Хотели бы выиграть<br>
+        в Жилищную лотерею?</div>
+    <div class="button clickable js-click-login" id="button1">Да, конечно</div>
+    <div id="text2" class="clickable" fl-close="" fl-track-ga="click-close-welcome">Нет, я не люблю выигрывать</div>
+  </div>
+
+  <div class="container" id="container-2" fl-screen="login">
+    <div id="close" fl-close="" fl-track-ga="click-close-login"><img src="get-widget_data/230a9c66-f67b-4330-93d4-c8993b462b60_close1.png" class="clickable"></div>
+    <img class="people" style="visibility: hidden;" src="get-widget_data/0d50dbad-5054-495e-9085-233fe351f8e4_bg01.png">
+    <div id="text3">Раскрываем все секреты:</div>
+    <div id="text4">Подпишитесь и получите справочник<br>о лотереях в подарок от Столото</div>
+    <div id="relative-input-container">
+      <input id="email" placeholder="Введите ваш email" type="text">
+      <div fl-login-form-error="email" class="Error">
+        <div class="Error-arrow"></div>
+        <div class="Error-inner">Проверьте корректность e-mail</div>
+      </div>
+    </div>
+    <div class="button clickable js-click-submit" id="button2">Подписаться</div>
+    <div id="text2" class="clickable js-click-terms">Пользовательское соглашение</div>
+  </div>
+
+  <div class="container" id="container-3" fl-screen="terms">
+    <div id="close" fl-close="" fl-track-ga="click-close-terms"><img src="get-widget_data/230a9c66-f67b-4330-93d4-c8993b462b60_close1.png" class="clickable"></div>    
+    <div id="text5">Пользовательское соглашение</div>
+    <div id="text6">Нажимая на кнопку "Подписаться" и заполняя настоящую форму, я даю согласие <br>на получение информационных материалов от stoloto.ru</div>    
+    <div id="text2" class="clickable js-click-terms-back">Вернуться назад</div>
+  </div>
+
+  <div class="container" id="container-4" fl-screen="thank-you">
+    <div id="close" fl-close="" fl-track-ga="click-close-thank-you"><img src="get-widget_data/230a9c66-f67b-4330-93d4-c8993b462b60_close1.png" class="clickable"></div>    
+    <img class="people" style="visibility: hidden;" src="get-widget_data/0d50dbad-5054-495e-9085-233fe351f8e4_bg01.png">
+    <div id="text5">Спасибо за подписку</div>
+    <div id="text7">Подтвердите, пожалуйста, свой e-mail,<br>перейдя по ссылке из письма, которое<br>мы выслали на указанный вами адрес.</div>    
+    <div class="button clickable" id="button3" fl-close="" fl-track-ga="click-close-thank-you">Закрыть</div>    
+  </div>
+
+  <script type="text/javascript" src="get-widget_data_003/bridge.js"></script>   
+  <script> 
+
+    bridge.onReady(function () {
+      bridge.setScreen('welcome'); // устанавиливаем первый экран
+      bridge.positionWidget({ type: 'popup', css: {backgroundColor: 'rgba(255,255,255,0.8)'} }).then(function() {
+        // Ресайзим
+        return bridge.resizeWidget({ width: 640, height: 'auto' });
+      }).then(function() {
+        // Показываем
+        bridge.showWidget();
+      });
+
+      $ = bridge.$;
+    // });
+
+    // $(document).ready(function() {
+
+      var EMAIL_REGEX = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+
+      function isEmailCorrect (emailValue) {
+        if(EMAIL_REGEX.test(emailValue)) {
+          return true
+        } else {
+          return false
+        }
+      }
+      
+      $(".js-click-login").on("click", function (e) {bridge.setScreen("login")});
+      $(".js-click-terms").on("click", function (e) {bridge.setScreen("terms")});
+      $(".js-click-terms-back").on("click", function (e) {bridge.setScreen("login")});
+
+
+      // function showEmailErrorMessage(message) {
+      //   var $emailErrorBlock = bridge.$('[fl-login-form-error="email"]');
+      //   $emailErrorBlock.find('.Error-inner').text(message);
+      //   $emailErrorBlock.show();
+      // }
+
+      // С помощью ручки столото проверяем, что такой email есть/нет у них в базе
+      // в data приходит {Boolean} true|false
+      // @return promise
+      function isEmailExist(email) {
+        return bridge.cc.$ajax.jsonp('/flocktory/check-mail', {email: email});
+      }
+
+      function hideErrorMsg() {
+        $(".Error").fadeOut('slow');
+      }
+
+      function showErrorMsg(message) {
+        var $emailErrorBlock = bridge.$('[fl-login-form-error="email"]');
+        $emailErrorBlock.find('.Error-inner').text(message);
+        $(".Error").fadeIn('slow', function() {setTimeout(hideErrorMsg,2000)});        
+      }
+
+      $(".js-click-submit").on("click", function (e) {        
+        emailValue = $.trim($("#email").val());
+
+        if (isEmailCorrect(emailValue)) {
+          isEmailExist(emailValue).then(function(isExist) {
+            if (isExist) {
+              showErrorMsg("Такой e-mail уже существует");
+              return false;
+            } else {
+              bridge.login({ email: emailValue, data: {a:'b'} });
+              bridge.setScreen('thank-you');
+            }
+          }).fail(function () {
+            showErrorMsg("Произошла ошибка, попробуйте позже");
+          });
+        } else {
+          showErrorMsg("Проверьте корректность e-mail");
+        }
+      });
+    });
+  
+  </script>
+
+</body></html>

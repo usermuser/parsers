@@ -1,0 +1,233 @@
+#doomsday {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+    z-index: 10000;
+    /*display: none;*/
+}
+
+#doomsday .doomsday__banner {
+    position: absolute;
+    width: 1549px;
+    height: 970px;
+    left: 50%;
+    top: 50%;
+    margin-left: -775px;
+    margin-top: -485px;
+    display: none;
+}
+
+/* Redhelper */
+#mylink {
+    font-size:18pt;
+    cursor: pointer;
+    position:fixed;top:50%;right:0px;
+    margin-top: 0px;
+    z-index:9999;
+}
+#mylink span.online {
+    color: #4c4;
+    display: none;
+    background:url(/media/stoloto/img/help_button_online.png);
+    width: 30px;
+    height: 90px;
+}
+#mylink span.offline {
+    display: none;
+    background:url(/media/stoloto/img/help_button_offline.png);
+    width: 30px;
+    height: 90px;
+}
+#mylink span {margin-right:-3px;}
+#mylink span:hover {margin-right:0;}
+
+.redhlp_online #mylink span.online{
+    display: block;
+}
+.redhlp_online #mylink span.offline {
+    display: none;
+}
+.redhlp_offline #mylink span.online{
+    display: none;
+}
+.redhlp_offline #mylink span.offline{
+    display: block;
+}
+.callme_popup{
+	display: none;
+	position: fixed;
+	left: 200px;
+	top: 57px;
+	width: 320px;
+	opacity: 1;
+	bottom: 0px;
+	border: medium none;
+	border-radius: 10px !important;
+	box-shadow: none !important;
+	min-height: 400px !important;
+	height: 400px !important;
+	min-width: 320px !important;
+	background: #220957 url(/media/stoloto/redhelper/vip_bg.png) repeat-x !important;
+	z-index: 9999;
+}
+#cm-close{
+	width: 15px !important;
+	height: 15px !important;
+	background: url("/media/stoloto/redhelper/close_vip.png") center no-repeat !important;
+	background-repeat: no-repeat !important;
+	background-size: auto !important;
+	opacity: 1 !important;
+	top: 13px !important;
+	cursor: pointer !important;
+	right: 20px;
+	position: absolute;
+	z-index: 9999;
+}	
+#cm-close:hover{
+	opacity: .5 !important;
+}
+
+#cm_title{
+	position: relative;
+	height: 45px;
+	padding: 0 20px;
+}
+#cm_title img {
+	position: relative;
+	top: 20px;
+	left: 0px;
+}
+#cm_title span {
+	font-size: 18px;
+	font-family: 'Arial';
+	font-weight: bold;
+	position: relative;
+	top: 10px;
+	left: 2px;
+	color: #fff;
+	text-shadow: none;
+}
+.cm_body #phone{
+	display: block;
+	margin: 0 20px;
+	width: 263px;
+	height: 25px;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 10px;
+	outline: 0;
+	border: 2px solid #fff;
+}
+.cm_body textarea{
+	margin: 10px 20px;
+	width: 267px;
+	height: 160px;
+	border-radius: 10px;
+	padding: 5px;
+	font-size: 14px;
+	outline: 0;
+}
+#chatSend {
+	background: url(/media/stoloto/redhelper/send.png) no-repeat;
+	width: 91px;
+	height: 32px;
+	border: none;
+	display: block;
+	right: 20px;
+	position: absolute;
+}
+
+.cm_intro{
+	margin: 10px 20px;
+	color: #fff;
+}
+#callme_button{
+	font-size: 18pt;
+	cursor: pointer;
+	position: fixed;
+	top: 50%;
+	right: -5px;
+	margin-top: -150px;
+	z-index: 9999;
+}
+#callme_button:hover{
+	right: 0px;
+}
+.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+.ui-draggable-handle {
+	-ms-touch-action: none;
+	touch-action: none;
+}
+#status, #statusError {
+	top: 4px;
+	width: 180px;
+	height: 32px;
+	border: none;
+	left: 20px;
+	position: relative;
+	display: none;
+	color: green !important;
+}
+#statusError{
+	color: red !important;
+}
+#chatSend:hover, #fileSend:hover {
+	opacity: 0.8;
+}
+.beta{
+	position: absolute;
+    right: 0px;
+    padding: 10px;
+    font-weight: bold;
+    padding-right: 30px;
+}
+
+/*  bingo80  */
+.game_header.game_header_bingo80:before {
+    background: url("/media/stoloto/bingo80/logo.png")0% 21%;
+    width: 91px;
+}
+.game_header.game_header_bingo80 {
+    background: url("/media/stoloto/bingo80/logo.png");
+    background-image: -ms-linear-gradient(top,#a17db2,#624373);
+    background-image: -moz-linear-gradient(top,#a17db2,#624373);
+    background-image: -webkit-linear-gradient(top,#a17db2,#624373);
+    background-image: -o-linear-gradient(top,#a17db2,#624373);
+}
+.icon.game_bingo80_tiny_icon, .with_icon.with_game_bingo80_tiny_icon:before{
+	background: url("/media/stoloto/bingo80/small_logo.png") 30% no-repeat;
+}
+.icon.game_bingo80_tiny_icon, .with_icon.with_game_bingo80_tiny_icon:before{
+	width: 39px;
+    height: 26px;
+    left: -42px;
+    margin-top: -10px;
+}
+.bg_bingo80 {
+    background: #624373;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(45deg,#a17db2 0,#624373 100%);
+    background: -webkit-gradient(linear,left bottom,right top,color-stop(0%,#a17db2),color-stop(100%,#624373));
+    background: -webkit-linear-gradient(45deg,#a17db2 0,#624373 100%);
+    background: -o-linear-gradient(45deg,#a17db2 0,#624373 100%);
+    background: -ms-linear-gradient(45deg,#a17db2 0,#624373 100%);
+    background: linear-gradient(45deg,#a17db2 0,#624373 100%);
+}
+#content .bingo_ticket.ruslotto.bingo80 .logo {
+    background: url("/media/stoloto/bingo80/ticket_logo.png") 50% 15px no-repeat #D4E5EE!important;
+}
+#content .bingo_ticket.bingo80 .ticket_number {
+    background-color: #D4E5EE!important;
+}
+#content .bingo_ticket.bingo80 td {
+    border-right: 1px solid #D4E5EE;
+    border-bottom: 1px solid #D4E5EE;
+}
+html #layout .stake_registration{
+	top: 0;
+}

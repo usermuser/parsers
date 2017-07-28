@@ -1,0 +1,81 @@
+/* REDHELPER */
+#rh-copy, #rh-chatBack, #rh-chatShadow {
+    display: none !important;
+}
+#rh-topPanel {
+    background: none !important;
+    border-bottom: none !important;
+    border-radius: none !important;
+    height: 70px !important;
+	cursor: pointer;
+}
+#rh-chat {
+    border: medium none;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+	min-height: 515px !important;
+	min-width: 320px !important;
+}
+#rh-frameWrapper {
+	top: 0 !important;
+    border-radius: 10px !important;
+}
+#rh-frameHelper {border-radius: 10px !important; }
+
+
+#rh-close , #rh-close:hover, #rh-close.hover, #rh-close.pressed  {
+	width: 15px !important;
+	height: 15px !important;
+	background: url("/media/stoloto/redhelper/close_vip.png") center no-repeat !important;
+	background-repeat: no-repeat !important;
+	background-size: auto !important;
+	opacity: 1 !important;
+	top: 13px !important;
+	cursor: pointer !important;
+}
+#rh-sound, #rh-sound:hover, #rh-sound.rh-soundOff, #rh-sound.rh-soundOff:hover{
+	width: 15px !important;
+	height: 15px !important;
+	background: url("/media/stoloto/redhelper/mute_vip.png") center no-repeat !important;
+	background-repeat: no-repeat !important;
+	background-size: auto !important;
+	opacity: 1 !important;
+	top: 13px !important;
+	cursor: pointer !important;
+}
+#rh-close {
+	left: auto !important;
+	right: 15px !important;
+}
+	#rh-close:hover, #rh-close.hover {
+		opacity: 0.5 !important;
+	}
+	
+#rh-sound {
+	left: auto !important;
+    right: 40px !important;
+}
+	#rh-sound:hover {
+		opacity: 0.5 !important;
+	}
+	#rh-sound.rh-soundOff {
+		opacity: 0.5 !important;
+	}
+		#rh-sound.rh-soundOff:hover {
+			opacity: 0.5 !important;
+		}
+		
+
+#rh-resizeBoth {
+	right: 5px !important;
+	bottom: 5px !important;
+	background: url("/media/stoloto/redhelper/resize.png") no-repeat !important;
+	height: 11px !important;
+	width: 11px !important;
+}		
+		
+/* redhelper */
+
+#mylink span.online, #mylink span.offline{
+background: none;
+}

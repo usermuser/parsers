@@ -1,0 +1,11 @@
+/*
+  @copyright 2012 Art. Lebedev Studio (http://www.artlebedev.ru/). All Rights Reserved.
+  @author Alexander Samilyak (aleksam@design.ru)
+  @author Alexey Khapov (chemist@design.ru)
+  @author Sergey Kopalkin (serge@design.ru)
+  @author Evgeny Kuleshov (groont@artlebedev.ru)
+  @author Igor Bodnar (ibodnar@artlebedev.ru)
+
+*/
+
+.vip_control{position:fixed;right:0;bottom:0;width:150px;z-index:7;font-size:92%;padding:1px 3px;background-color:#fff;border:1px solid rgba(0,0,0,.1);display:none}.vip_control .refresh,.vip_control label+label{margin-left:10px}

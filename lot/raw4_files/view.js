@@ -1,0 +1,1 @@
+if (typeof sociomantic === 'object' && typeof sociomantic.sonar === 'object' && typeof sociomantic.sonar.response === 'function') sociomantic.sonar.response('','r08710381894823997');

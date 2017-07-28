@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}</style>
+  <title>POPUP</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">   
+  <script type="text/javascript" src="get-widget_data_003/bridge.js"></script>  
+  <script>
+    bridge.onReady(function () {         
+      bridge.positionWidget({type: 'fixed', css: {top: 0, left: '50%', transform: 'translate(-50%, 0)'}}).then(function() {
+        // Ресайзим
+        return bridge.resizeWidget({ width: 750, height: 285 });
+      }).then(function() {
+        // Показываем
+        bridge.showWidget();
+      });
+    });
+  </script>    
+  <style>
+    * {
+      padding:0;margin:0;border:0;box-sizing:border-box;outline:0;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      width: 750px;
+      height: 285px;
+    }
+    .popup-container {      
+      position: relative;
+      width: 750px;
+      height: 285px;
+      background: url(https://assets.flocktory.com/uploads/clients/2132/35b5699e-cf0e-426a-a93d-2eb3d6e3066d_widget.png) 50% 50%; 
+    }
+    #close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+    #close:hover {      
+      opacity: .8;
+    }    
+    .button {      
+      display: block;
+      position: relative;
+      top: 161px;
+      left: 367px;
+      height: 77px;
+      width: 305px;      
+    }     
+  </style>
+
+</head>
+<body>
+  <div class="popup-container">
+    <img id="close" src="get-widget_data_003/15dd1ad7-61c0-4d01-98cc-bf0c9741ceb6_cross.png" fl-close="">        
+    <a class="button" fl-track-ga="click-button" href="http://igra-rl.stoloto.ru/?bls=flocktory&amp;utm_source=stoloto&amp;utm_campaign=flocktory&amp;utm_medium=banner" target="_blank"></a>    
+  </div>
+
+</body></html>
