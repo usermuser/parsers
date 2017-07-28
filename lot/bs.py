@@ -44,13 +44,12 @@ output_file=open('120.txt','a')
 #output_file.write(str(ss))
 for i in range(len(ss)):
 	print(ss[i])
-    
 	#print('\n')
-	#stri=str(i)[20]
+	#stri=str(i)
 	#print stri
-	
-	#output_file.write(str((ss[i])))
-	#output_file.write('\n')
+
+	output_file.write(str((ss[i])))
+	output_file.write('\n')
 output_file.close()
 print('Writing complete')
 
